@@ -10,8 +10,12 @@ export class ConfigService {
     }
 
     get(key: string): string {
-        if (this.envConfig[key] !== undefined) {
-            return this.envConfig[key];
+        return this.envConfig[key];
+    }
+
+    getOrFail(key: string): string {
+        if (this.get(key) !== undefined) {
+            return this.get(key);
         } else {
             throw new ConfigNotFoundException('');
         }
