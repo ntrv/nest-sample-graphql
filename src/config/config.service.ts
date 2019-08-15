@@ -6,22 +6,22 @@ import { ConfigNotFoundException } from './config.exception';
 
 @Injectable()
 export class ConfigService {
-    private readonly envConfig: { [key: string]: string };
+  private readonly envConfig: { [key: string]: string };
 
-    constructor(env: string) {
-        const filePath = resolve(__dirname, `../../${env || ''}.env`)
-        this.envConfig = dotenv.parse(readFileSync(filePath));
-    }
+  constructor(env: string) {
+    const filePath = resolve(__dirname, `../../${env || ''}.env`);
+    this.envConfig = dotenv.parse(readFileSync(filePath));
+  }
 
-    get(key: string): string {
-        return this.envConfig[key];
-    }
+  get(key: string): string {
+    return this.envConfig[key];
+  }
 
-    getOrFail(key: string): string {
-        if (this.get(key) !== undefined) {
-            return this.get(key);
-        } else {
-            throw new ConfigNotFoundException('');
-        }
+  getOrFail(key: string): string {
+    if (this.get(key) !== undefined) {
+      return this.get(key);
+    } else {
+      throw new ConfigNotFoundException('');
     }
+  }
 }

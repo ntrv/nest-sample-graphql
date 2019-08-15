@@ -1,4 +1,4 @@
 export interface HelloResponse {
-    message: string,
-    now: Date,
+  message: string;
+  now: Date;
 }

@@ -3,9 +3,6 @@ import { ConfigModule } from '../config/config.module';
 import { HelloModule } from '../hello/hello.module';
 
 @Module({
-  imports: [
-    ConfigModule,
-    HelloModule,
-  ],
+  imports: [ConfigModule, HelloModule],
 })
 export class AppModule {}
