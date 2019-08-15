@@ -1,4 +1,4 @@
-export interface Hello {
+export interface HelloResponse {
     message: string,
     now: Date,
 }

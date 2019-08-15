@@ -1,5 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
-import { ConfigService } from './services/config.service';
+import { ConfigService } from './config/config.service';
 
 const config = new ConfigService(process.env.NODE_ENV);
 

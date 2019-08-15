@@ -1,8 +1,10 @@
-import * as dotenv from 'dotenv';
+import { Injectable } from '@nestjs/common';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { ConfigNotFoundException } from '../exceptions/config';
+import * as dotenv from 'dotenv';
+import { ConfigNotFoundException } from './config.exception';
 
+@Injectable()
 export class ConfigService {
     private readonly envConfig: { [key: string]: string };
 
