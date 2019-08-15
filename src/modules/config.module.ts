@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '../services/config.service';
-import * as path from 'path';
 
 @Module({
     providers: [
         {
             provide: ConfigService,
-            useValue: new ConfigService(path.resolve(__dirname, `../../${process.env.NODE_ENV || ''}.env`)),
+            useValue: new ConfigService(process.env.NODE_ENV),
         },
     ],
     exports: [ConfigService],

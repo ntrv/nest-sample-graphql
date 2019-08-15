@@ -1,12 +1,14 @@
 import * as dotenv from 'dotenv';
-import * as fs from 'fs';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import { ConfigNotFoundException } from '../exceptions/config';
 
 export class ConfigService {
     private readonly envConfig: { [key: string]: string };
 
-    constructor(filePath: string) {
-        this.envConfig = dotenv.parse(fs.readFileSync(filePath));
+    constructor(env: string) {
+        const filePath = resolve(__dirname, `../../${env || ''}.env`)
+        this.envConfig = dotenv.parse(readFileSync(filePath));
     }
 
     get(key: string): string {
