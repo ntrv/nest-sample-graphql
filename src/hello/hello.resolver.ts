@@ -6,8 +6,8 @@ import { Hello } from '../graphql.schema';
 export class HelloResolver {
     constructor(private readonly helloService: HelloService) {}
 
-    @Query()
-    async hello(@Args('name') name: string): Promise<Hello> {
+    @Query('hello')
+    async getHello(@Args('name') name: string): Promise<Hello> {
         return await this.helloService.getHello(name);
     }
 }
