@@ -1,0 +1,12 @@
+scalar DateTime
+
+type Task {
+    id: ID!
+    overview: String
+    priority: Int
+    deadline: DateTime
+}
+
+type Query {
+    findTaskById(id: String): Task
+}

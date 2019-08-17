@@ -28,6 +28,7 @@
     "apollo-server-express": "^2.8.1",
     "dotenv": "^8.0.0",
     "graphql": "^14.4.2",
+    "graphql-iso-date": "^3.6.1",
     "graphql-tools": "^4.0.5",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
