@@ -1,0 +1,11 @@
+{
+  "files.defaultLanguage": "",
+  "files.associations": {
+    "Vagrantfile": "ruby",
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.direnv": true,
+  }
+}
