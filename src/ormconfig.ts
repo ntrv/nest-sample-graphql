@@ -1,5 +1,6 @@
 import { ConnectionOptions } from 'typeorm';
 import { ConfigService } from './config/config.service';
+import { join } from 'path';
 
 const config = new ConfigService(process.env.NODE_ENV);
 
@@ -10,13 +11,13 @@ export const ormConfig: ConnectionOptions = {
   username: config.get('DB_USERNAME'),
   password: config.get('DB_PASSWORD'),
   database: config.get('DB_NAME'),
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  entities: [join(__dirname, './**/*.entity{.ts,.js}')],
   synchronize: false,
   migrationsRun: false,
   logging: true,
   logger: 'file',
-  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+  migrations: [join(__dirname, '/migrations/**/*{.ts,.js}')],
   cli: {
-    migrationsDir: 'src/migrations',
+    migrationsDir: join(__dirname, '../migrations'),
   },
 };
