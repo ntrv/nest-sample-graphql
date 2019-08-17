@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ConfigModule } from '../config/config.module';
-import { HelloModule } from '../hello/hello.module';
+import { ConfigModule } from './config/config.module';
+import { HelloModule } from './hello/hello.module';
 import { join } from 'path';
 
 @Module({
@@ -9,9 +9,9 @@ import { join } from 'path';
     ConfigModule,
     HelloModule,
     GraphQLModule.forRoot({
-      typePaths: ['../**/*.graphql'],
+      typePaths: ['./**/*.graphql'],
       definitions: {
-        path: join(__dirname, '../graphql.ts'),
+        path: join(__dirname, './graphql.ts'),
         outputAs: 'class',
       },
       debug: true,
