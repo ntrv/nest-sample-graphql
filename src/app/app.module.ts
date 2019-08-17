@@ -9,11 +9,13 @@ import { join } from 'path';
     ConfigModule,
     HelloModule,
     GraphQLModule.forRoot({
-      typePaths: ['../**.*.graphql'],
+      typePaths: ['../**/*.graphql'],
       definitions: {
         path: join(__dirname, '../graphql.ts'),
         outputAs: 'class',
-      }
+      },
+      debug: true,
+      playground: true
     }),
   ],
 })
