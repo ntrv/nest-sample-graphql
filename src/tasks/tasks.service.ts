@@ -14,7 +14,7 @@ export class TasksService {
 
     async findOneById(id: string): Promise<Task> {
         const task = await this.taskRepository.findOne(id);
-        return Promise.resolve(task);
+        return task;
     }
 
     async create(input: AddTaskInput): Promise<Task>{
@@ -26,6 +26,6 @@ export class TasksService {
         };
 
         const task = await this.taskRepository.create(data);
-        return Promise.resolve(task);
+        return task;
     }
 }

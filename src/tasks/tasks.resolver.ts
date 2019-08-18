@@ -16,7 +16,7 @@ export class TasksResolver {
     }
 
     @Mutation(returns => Task)
-    async create(@Args() args: AddTaskInput): Promise<Task> {
+    async createTask(@Args('addTaskInput') args: AddTaskInput): Promise<Task> {
         return await this.tasksService.create(args);
     }
 }
