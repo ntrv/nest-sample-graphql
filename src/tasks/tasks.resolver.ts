@@ -8,6 +8,6 @@ export class TasksResolver {
 
     @Query('findTaskById')
     async findTaskById(@Args('id') id: string): Promise<Task> {
-        return await this.tasksService.findTaskById(id);
+        return this.tasksService.findTaskById(id);
     }
 }
