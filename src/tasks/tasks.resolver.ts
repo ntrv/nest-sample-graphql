@@ -1,7 +1,7 @@
 import { Resolver, Args, Query, Mutation } from '@nestjs/graphql';
-import { Task } from '../graphql.schema';
+import { Task } from './task.entity';
 import { TasksService } from './tasks.service';
-import { AddTaskDto } from './dto/add-task.dto';
+import { AddTaskInput } from './task.input';
 
 @Resolver('Tasks')
 export class TasksResolver {
@@ -13,7 +13,7 @@ export class TasksResolver {
     }
 
     @Mutation('addTask')
-    async create(@Args('addTaskInput') args: AddTaskDto): Promise<Task> {
+    async create(@Args() args: AddTaskInput): Promise<Task> {
         return await this.tasksService.create(args);
     }
 }

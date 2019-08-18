@@ -1,42 +1,36 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Task } from '../graphql.schema';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TaskEntity } from './task.entity';
+import { Task } from './task.entity';
 import { ulid } from 'ulid';
-import { AddTaskDto } from './dto/add-task.dto';
+import { AddTaskInput } from './task.input';
 
 @Injectable()
 export class TasksService {
     constructor(
-        @InjectRepository(TaskEntity)
-        private readonly taskRepository: Repository<TaskEntity>
+        @InjectRepository(Task)
+        private readonly taskRepository: Repository<Task>
     ) {}
 
     async findOneById(id: string): Promise<Task> {
-        const entity = await this.taskRepository.findOne(id);
+        const task = await this.taskRepository.findOne(id);
 
-        if (entity.hasId) {
+        if (task.hasId) {
             throw new NotFoundException('');
         }
 
-        return Promise.resolve({
-            id: entity.id,
-            overview: entity.overview,
-            priority: entity.priority,
-            deadline: entity.deadline
-        });
+        return Promise.resolve(task);
     }
 
-    async create(task: AddTaskDto): Promise<Task>{
+    async create(input: AddTaskInput): Promise<Task>{
         const data = {
             id: ulid(),
-            overview: task.overview,
-            priority: task.priority,
-            deadline: task.deadline
+            overview: input.overview,
+            priority: input.priority,
+            deadline: input.deadline
         };
 
-        await this.taskRepository.create(data);
-        return Promise.resolve(data);
+        const task = await this.taskRepository.create(data);
+        return Promise.resolve(task);
     }
 }
