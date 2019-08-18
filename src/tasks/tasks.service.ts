@@ -3,6 +3,7 @@ import { Task } from '../graphql.schema';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Task as TaskEntity } from './task.entity';
+import { ulid } from 'ulid';
 
 @Injectable()
 export class TasksService {
@@ -11,7 +12,7 @@ export class TasksService {
         private readonly taskRepository: Repository<TaskEntity>
     ) {}
 
-    async findTaskById(id: string): Promise<Task> {
+    async findOneById(id: string): Promise<Task> {
         const entity = await this.taskRepository.findOne(id);
 
         if (entity.hasId) {
@@ -28,13 +29,13 @@ export class TasksService {
 
     async create(task: Task): Promise<Task>{
         const data = {
-            id: '',
+            id: ulid(),
             overview: task.overview,
             priority: task.priority,
             deadline: task.deadline
         };
 
         this.taskRepository.create(data);
-        return data;
+        return Promise.resolve(data);
     }
 }

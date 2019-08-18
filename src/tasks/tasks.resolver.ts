@@ -9,10 +9,10 @@ export class TasksResolver {
 
     @Query('findTaskById')
     async findTaskById(@Args('id') id: string): Promise<Task> {
-        return this.tasksService.findTaskById(id);
+        return this.tasksService.findOneById(id);
     }
 
-    @Mutation()
+    @Mutation('')
     async create(@Args('addTaskInput') args: AddTaskDto): Promise<Task> {
         return await this.tasksService.create(args);
     }
