@@ -10,3 +10,14 @@ type Task {
 type Query {
     findTaskById(id: String): Task
 }
+
+type Mutation {
+    addTask(addTaskInput: AddTaskInput): Task
+    deleteTask(id: String!): Task
+}
+
+input AddTaskInput {
+    overview: String
+    priority: Int
+    deadline: DateTime
+}

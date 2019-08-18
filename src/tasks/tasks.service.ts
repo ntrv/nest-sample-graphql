@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Task } from '../graphql.schema';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -12,11 +12,29 @@ export class TasksService {
     ) {}
 
     async findTaskById(id: string): Promise<Task> {
-        return await {
-            id: "foo",
-            overview: "hello world",
-            priority: 1,
-            deadline: "2016-01-01T19:10:20+09:00"
+        const entity = await this.taskRepository.findOne(id);
+
+        if (entity.hasId) {
+            throw new NotFoundException('');
+        }
+
+        return Promise.resolve({
+            id: entity.id,
+            overview: entity.overview,
+            priority: entity.priority,
+            deadline: entity.deadline
+        });
+    }
+
+    async create(task: Task): Promise<Task>{
+        const data = {
+            id: '',
+            overview: task.overview,
+            priority: task.priority,
+            deadline: task.deadline
         };
+
+        this.taskRepository.create(data);
+        return data;
     }
 }

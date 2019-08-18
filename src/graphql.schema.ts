@@ -5,8 +5,20 @@
  */
 
 /* tslint:disable */
+export class AddTaskInput {
+    overview?: string;
+    priority?: number;
+    deadline?: DateTime;
+}
+
 export class Hello {
     message?: string;
+}
+
+export abstract class IMutation {
+    abstract addTask(addTaskInput?: AddTaskInput): Task | Promise<Task>;
+
+    abstract deleteTask(id: string): Task | Promise<Task>;
 }
 
 export abstract class IQuery {
