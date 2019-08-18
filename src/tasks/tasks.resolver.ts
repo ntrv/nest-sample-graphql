@@ -21,7 +21,14 @@ export class TasksResolver {
     @Mutation(returns => Task)
     async createTask(@Args('addTaskInput') args: AddTaskInput): Promise<Task> {
         const task = await this.tasksService.create(args)
-        pubsub.publish('taskAdded', {taskAdded: task});
+        await pubsub.publish('taskAdded', {taskAdded: {
+            id: task.id,
+            overview: task.overview,
+            priority: task.priority,
+            deadline: task.deadline,
+            createdAt: task.createdAt,
+            updatedAt: task.updatedAt,
+        }});
         return task;
     }
 
