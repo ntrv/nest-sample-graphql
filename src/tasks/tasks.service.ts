@@ -18,14 +18,12 @@ export class TasksService {
     }
 
     async create(input: AddTaskInput): Promise<Task>{
-        const data = {
-            id: ulid(),
-            overview: input.overview,
-            priority: input.priority,
-            deadline: input.deadline
-        };
+        const task = new Task();
+        task.id = ulid();
+        task.overview = input.overview;
+        task.priority = input.priority;
+        task.deadline = new Date(input.deadline);
 
-        const task = await this.taskRepository.create(data);
-        return task;
+        return await this.taskRepository.save(task);
     }
 }
