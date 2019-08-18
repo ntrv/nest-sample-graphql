@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TaskEntity } from './task.entity';
 import { ulid } from 'ulid';
+import { AddTaskDto } from './dto/add-task.dto';
 
 @Injectable()
 export class TasksService {
@@ -27,7 +28,7 @@ export class TasksService {
         });
     }
 
-    async create(task: Task): Promise<Task>{
+    async create(task: AddTaskDto): Promise<Task>{
         const data = {
             id: ulid(),
             overview: task.overview,
@@ -35,7 +36,7 @@ export class TasksService {
             deadline: task.deadline
         };
 
-        this.taskRepository.create(data);
+        await this.taskRepository.create(data);
         return Promise.resolve(data);
     }
 }
