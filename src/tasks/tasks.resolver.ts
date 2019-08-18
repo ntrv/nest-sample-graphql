@@ -1,18 +1,21 @@
+import { NotFoundException } from '@nestjs/common';
 import { Resolver, Args, Query, Mutation } from '@nestjs/graphql';
 import { Task } from './task.entity';
 import { TasksService } from './tasks.service';
 import { AddTaskInput } from './task.input';
 
-@Resolver('Tasks')
+@Resolver(of => Task)
 export class TasksResolver {
     constructor(private readonly tasksService: TasksService) {}
 
-    @Query('findTaskById')
+    @Query(returns => Task)
     async findTaskById(@Args('id') id: string): Promise<Task> {
-        return this.tasksService.findOneById(id);
+        const task = await this.tasksService.findOneById(id);
+        if (!task) throw new NotFoundException(id);
+        return task;
     }
 
-    @Mutation('addTask')
+    @Mutation(returns => Task)
     async create(@Args() args: AddTaskInput): Promise<Task> {
         return await this.tasksService.create(args);
     }

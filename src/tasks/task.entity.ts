@@ -7,7 +7,7 @@ import {
     UpdateDateColumn,
 } from "typeorm";
 import { MinLength } from "class-validator";
-import { Field, ObjectType } from 'type-graphql';
+import { Field, ObjectType, Int } from 'type-graphql';
 
 @ObjectType()
 @Entity({name: 'tasks'})
@@ -21,7 +21,7 @@ export class Task extends BaseEntity {
     @Column()
     public overview: string;
 
-    @Field()
+    @Field(type => Int)
     @Column()
     public priority: number;
 
