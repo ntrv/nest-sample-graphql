@@ -8,7 +8,7 @@ export class createTasks1566138440159 implements MigrationInterface {
             columns: [
                 {
                     name: "id",
-                    type: "int",
+                    type: "varchar",
                     isPrimary: true,
                 },
                 {
@@ -21,7 +21,7 @@ export class createTasks1566138440159 implements MigrationInterface {
                 },
                 {
                     name: "deadline",
-                    type: "string",
+                    type: "datetime",
                 },
                 {
                     name: "created_at",
