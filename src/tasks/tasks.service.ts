@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Task } from '../graphql.schema';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Task as TaskEntity } from './task.entity';
+import { TaskEntity } from './task.entity';
 import { ulid } from 'ulid';
 
 @Injectable()
