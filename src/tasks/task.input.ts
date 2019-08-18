@@ -9,5 +9,5 @@ export class AddTaskInput {
     priority?: number;
 
     @Field()
-    deadline?: string;
+    deadline?: Date;
 }
