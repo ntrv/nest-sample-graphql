@@ -1,8 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { MinLength } from "class-validator";
 
 @Entity()
 export class Task extends BaseEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
+    @MinLength(10)
     public id: string;
 
     @Column()
