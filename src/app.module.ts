@@ -19,6 +19,7 @@ import { Task } from './tasks/task.entity'
       ...ormConfig,
       entities: [Task],
     }),
+    HelloModule,
     TasksModule,
   ],
 })

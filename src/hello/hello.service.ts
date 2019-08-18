@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '../config/config.service';
-import { Hello } from '../graphql.schema';
+import { Hello } from './hello.entity';
 
 @Injectable()
 export class HelloService {
