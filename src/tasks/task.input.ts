@@ -1,11 +1,11 @@
-import { Field, InputType} from 'type-graphql';
+import { Field, InputType, Int } from 'type-graphql';
 
 @InputType()
 export class AddTaskInput {
     @Field()
     overview?: string;
 
-    @Field()
+    @Field(type => Int)
     priority?: number;
 
     @Field()

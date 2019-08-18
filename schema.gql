@@ -5,7 +5,7 @@
 
 input AddTaskInput {
   overview: String!
-  priority: Float!
+  priority: Int!
   deadline: String!
 }
 
