@@ -22,14 +22,17 @@ export class createTasks1566138440159 implements MigrationInterface {
                 {
                     name: "deadline",
                     type: "datetime",
+                    default: "CURRENT_TIMESTAMP",
                 },
                 {
                     name: "created_at",
                     type: "datetime",
+                    default: "CURRENT_TIMESTAMP",
                 },
                 {
                     name: "updated_at",
                     type: "datetime",
+                    default: "CURRENT_TIMESTAMP",
                 },
             ],
         }), true);
