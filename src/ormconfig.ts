@@ -16,7 +16,7 @@ export const ormConfig: ConnectionOptions = {
   migrationsRun: false,
   logging: true,
   logger: 'file',
-  migrations: [join(__dirname, '/migrations/**/*{.ts,.js}')],
+  migrations: [join(__dirname, '../migrations/**/*{.ts,.js}')],
   cli: {
     migrationsDir: join(__dirname, '../migrations'),
   },

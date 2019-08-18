@@ -13,6 +13,6 @@ export class HelloService {
   }
 
   getDBUser(): string {
-    return this.config.get('DB_USER');
+    return this.config.get('DB_USERNAME');
   }
 }
