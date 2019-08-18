@@ -16,8 +16,8 @@ import { Task } from './tasks/task.entity'
       useFactory: async (config: ConfigService) => ({
         autoSchemaFile: 'schema.gql',
         installSubscriptionHandlers: true,
-        debug: config.get('APP_DEBUG') == "true",
-        playground: config.get('APP_DEBUG') == "true",
+        debug: Boolean(config.get('APP_DEBUG')),
+        playground: Boolean(config.get('APP_DEBUG')),
       }),
       inject: [ConfigService],
     }),
