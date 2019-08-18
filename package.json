@@ -8,6 +8,7 @@
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "db:migrate": "ts-node $(npm bin)/typeorm migration:run",
+    "db:migrate:revert": "ts-node $(npm bin)/typeorm migration:revert",
     "db:migrate:create": "ts-node $(npm bin)/typeorm migration:create --name",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
