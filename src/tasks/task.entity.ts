@@ -1,20 +1,22 @@
 import {
     Entity,
     BaseEntity,
-    PrimaryGeneratedColumn,
+    PrimaryColumn,
     Column,
     CreateDateColumn,
     UpdateDateColumn,
 } from "typeorm";
-import { MinLength } from "class-validator";
+import { MinLength, IsUUID } from "class-validator";
 import { Field, ObjectType, Int } from 'type-graphql';
+import { ulid } from 'ulid';
 
 @ObjectType()
 @Entity({name: 'tasks'})
 export class Task extends BaseEntity {
     @Field()
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn({nullable: false, default: ulid()})
     @MinLength(10)
+    @IsUUID('4')
     public id: string;
 
     @Field()
