@@ -12,3 +12,8 @@ services:
       TZ: Asia/Tokyo
     ports:
       - "3306:3306"
+  redis:
+    image: redis:5
+    restart: always
+    ports:
+      - "6379:6379"

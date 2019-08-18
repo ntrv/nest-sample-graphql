@@ -12,8 +12,9 @@ import { Task } from './tasks/task.entity'
     ConfigModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      installSubscriptionHandlers: true,
       debug: true,
-      playground: true
+      playground: true,
     }),
     TypeOrmModule.forRoot({
       ...ormConfig,

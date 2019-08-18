@@ -27,6 +27,10 @@ type Query {
   findTaskById(id: String!): Task!
 }
 
+type Subscription {
+  taskAdded: Task!
+}
+
 type Task {
   id: String!
   overview: String!
