@@ -3,8 +3,7 @@ import { ConfigService } from './config/config.service';
 import { join } from 'path';
 
 const config = new ConfigService(process.env.NODE_ENV);
-
-export const ormConfig: ConnectionOptions = {
+const ormConfig: ConnectionOptions = {
   type: config.getOrFail('DB_CONNECTION') as any,
   host: config.getOrFail('DB_HOST'),
   port: parseInt(config.get('DB_PORT'), 10) || 3306,
@@ -21,3 +20,5 @@ export const ormConfig: ConnectionOptions = {
     migrationsDir: join(__dirname, '../migrations'),
   },
 };
+
+export default ormConfig;
